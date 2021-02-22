@@ -36,10 +36,11 @@ console.log(firstName); // logs 'Mary'
 
 let lastName = "Simpson";
 let lastName = "Thompson"; //throws an error
+console.log(lastName);
 
 const nickName = "Flea";
 const nickName = "Lion"; //throws an error - cannot be re-declared
-nickName = "Lion"; // throws an error - cannot be re-assigned
+nickName += "Lion"; // throws an error - cannot be re-assigned
 
 // var
 var bar = "one";
@@ -51,12 +52,12 @@ console.log(bar); // two
 // let
 let bar2 = "one";
 if (true) {
-  console.log(bar2);
-  bar2 = "two";
+  let bar2 = "two";
+  console.log(bar2); // two
 }
 console.log(bar2); // one
 
-// modifiying an array or an object declared with const
+// Modifiying an array or an object declared with const
 
 const fruits = ["orange"];
 fruits.push("Apple");
@@ -66,10 +67,14 @@ const dog = { name: "Bingo" };
 dog.numLegs = 4;
 console.log(dog);
 
-//Prevent object mutations
+// Prevent object mutations
 Object.freeze(dog);
 dog.color = "black";
 console.log(dog);
+
+// Copy object instead of modifying it
+const newDog = { ...dog, color: "black" };
+console.log(newDog);
 
 // Interview question:
 
@@ -90,4 +95,5 @@ console.log("user:", user);
 console.log("users:", users);
 console.log("group:", group);
 
-// We need to be aware of this for functional programing
+// Functions can mutate variables, not reassign them
+// We need to be aware of this for functional programing... coming soon
